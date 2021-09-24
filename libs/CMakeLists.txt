@@ -1,3 +1,3 @@
 cmake_minimum_required(VERSION 3.16.3)
 
-add_subdirectory(image_formation)
+add_subdirectory(opencv_plot)

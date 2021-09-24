@@ -1,4 +1,6 @@
+cmake_minimum_required(VERSION 3.16.3)
+
 project(image_formation)
 
-add_subdirectory(ex_1)
-add_subdirectory(ex_2)
+include_directories(include)
+add_subdirectory(src)
