@@ -10,7 +10,7 @@ add_executable(ex_1
 
 target_link_libraries(ex_1 
     PRIVATE matplotlib_cpp 
-    PRIVATE eigen_ext 
+    PRIVATE algebra_ext 
     PRIVATE Eigen3::Eigen
 )
 target_include_directories(ex_1 PRIVATE "${CMAKE_SOURCE_DIR}/libs/matplotlib_cpp")

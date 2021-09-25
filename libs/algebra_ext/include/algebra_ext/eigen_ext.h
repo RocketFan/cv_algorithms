@@ -3,7 +3,7 @@
 #include <vector>
 #include <Eigen/Dense>
 
-namespace eigen_ext
+namespace algebra_ext
 {
     using namespace Eigen;
 
@@ -25,4 +25,4 @@ namespace eigen_ext
     };
 }
 
-#include "../src/eigen_ext.tpp"
+#include "../../src/eigen_ext.tpp"
