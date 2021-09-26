@@ -2,14 +2,12 @@
 
 #include <Eigen/Dense>
 
-namespace image_formation
-{
-    using namespace Eigen;
+namespace image_formation {
+using namespace Eigen;
 
-    class LeastSquaresBasic
-    {
-    public:
-        /**
+class LeastSquaresBasic {
+   public:
+    /**
          * Find nearest intersection point of n lines in 2d.
          * 
          * @note Even if lines have no common point algorithm 
@@ -21,9 +19,9 @@ namespace image_formation
          * 
          * @return False if in_lines rows is less than 2 otherwise true.
          */
-        static bool find_lines_intersection_point_2d(Matrix<float, 1, 2> &out_point, Matrix<float, -1, 3> &in_lines);
+    static bool find_lines_intersection_point_2d(Matrix<float, 1, 2> &out_point, Matrix<float, -1, 3> &in_lines);
 
-        /**
+    /**
          * Fit a line to banch of points in 2d using least squares
          * 
          * @param[out] out_line the best fitted line to input points with format (a, b, c)
@@ -33,6 +31,6 @@ namespace image_formation
          * 
          * @return false if in_points rows is less than 2 otherwise true. 
          */
-        static bool fit_line_2d(Matrix<float, 1, 2> &out_line, Matrix<float, -1, 3> &in_points);
-    };
-}
+    static bool fit_line_2d(Matrix<float, 1, 2> &out_line, Matrix<float, -1, 3> &in_points);
+};
+}  // namespace image_formation

@@ -2,14 +2,12 @@
 
 #include <Eigen/Dense>
 
-namespace algebra_ext
-{
-    using namespace Eigen;
+namespace algebra_ext {
+using namespace Eigen;
 
-    class LineExt
-    {
-    public:
-        /**
+class LineExt {
+   public:
+    /**
          * Get points which lie on the line at x positions in 2D.
          * 
          * @param line the equation of the line in form (a, b, c) where ax + by + c = 0.
@@ -17,7 +15,7 @@ namespace algebra_ext
          * 
          * @return Matrix where each row is point in form (x, y).
         */
-        static MatrixX2f get_line_points_2d(const Vector3f &line,
-                                            const VectorXf &X);
-    };
-}
+    static MatrixX2f get_line_points_2d(const Vector3f &line,
+                                        const VectorXf &X);
+};
+}  // namespace algebra_ext

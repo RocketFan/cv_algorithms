@@ -1,16 +1,14 @@
 #pragma once
 
-#include <vector>
 #include <Eigen/Dense>
+#include <vector>
 
-namespace algebra_ext
-{
-    using namespace Eigen;
+namespace algebra_ext {
+using namespace Eigen;
 
-    class EigenExt
-    {
-    public:
-        /**
+class EigenExt {
+   public:
+    /**
          * Create 2d vector from DanseBase of any type.
          * 
          * @tparam T type of returned vector.
@@ -20,9 +18,9 @@ namespace algebra_ext
          * 
          * @return 2D vector of type T.
         */
-        template <typename T, typename U>
-        static std::vector<T> eigen2stdvec_2d(const DenseBase<U> &dense);
-    };
-}
+    template <typename T, typename U>
+    static std::vector<T> eigen2stdvec_2d(const DenseBase<U> &dense);
+};
+}  // namespace algebra_ext
 
 #include "../../src/eigen_ext.tpp"
