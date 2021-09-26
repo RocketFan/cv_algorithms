@@ -13,6 +13,6 @@ target_link_libraries(ex_1
     PRIVATE algebra_ext 
     PRIVATE Eigen3::Eigen
 )
-target_include_directories(ex_1 PRIVATE "${CMAKE_SOURCE_DIR}/libs/matplotlib_cpp")
+target_include_directories(ex_1 PRIVATE "${CMAKE_SOURCE_DIR}/lib/matplotlib_cpp")
 
 set_target_properties(ex_1 PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/${PROJECT_NAME}")

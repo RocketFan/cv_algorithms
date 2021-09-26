@@ -1,6 +1,6 @@
 [submodule "libs/matplotlib_cpp"]
-	path = libs/matplotlib_cpp
+	path = lib/matplotlib_cpp
 	url = https://github.com/lava/matplotlib-cpp.git
 [submodule "libs/googletest"]
-	path = libs/googletest
+	path = lib/googletest
 	url = https://github.com/google/googletest.git
