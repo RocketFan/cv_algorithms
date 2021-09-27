@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        ".clang-format": "properties",
         "new": "cpp",
         "*.tcc": "cpp",
         "type_traits": "cpp",
@@ -52,5 +53,8 @@
         "typeinfo": "cpp",
         "utility": "cpp",
         "*.tpp": "cpp",
+        "any": "cpp",
+        "atomic": "cpp",
+        "variant": "cpp"
     }
 }
