@@ -37,11 +37,11 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 
 ## Setup && Run
 ```bash
-git clone https://github.com/RocketFan/cv_algorithms.git
+git clone https://github.com/RocketFan/cv_algorithms.git --recursive
 cd cv_algorithms
 mkdir build && cd build
 cmake ..
-cmake --build
+cmake --build .
 ```
 
 Go to build/bin folder and find exercise which you want to run.
