@@ -1,6 +1,6 @@
 #include "algebra_ext/line_ext.h"
 
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 
 using namespace algebra_ext;
 using namespace Eigen;
@@ -48,6 +48,7 @@ TEST_F(LineExtTest, get_line_points_2d_PointsX_StayTheSameAsInputX) {
 
 TEST_F(LineExtTest, get_line_points_2d_ReturnedPoints_AsExpected) {
     MatrixX2f points0(_X0.size(), 2), points1(_X1.size(), 2), points2(_X2.size(), 2);
+
     points0 << _X0(0), -2,
         _X0(1), -3,
         _X0(2), -4,
@@ -63,3 +64,18 @@ TEST_F(LineExtTest, get_line_points_2d_ReturnedPoints_AsExpected) {
     EXPECT_EQ(LineExt::get_line_points_2d(_line2, _X2), points2);
 }
 
+TEST_F(LineExtTest, get_line_points_2d_ReturnedPoints_LieOnTheLine) {
+    auto point0 = LineExt::get_line_point_2d(_line0);
+    auto point1 = LineExt::get_line_point_2d(_line1);
+    auto point2 = LineExt::get_line_point_2d(_line2);
+
+    EXPECT_TRUE(LineExt::check_point(_line0, point0));
+    EXPECT_TRUE(LineExt::check_point(_line1, point1));
+    EXPECT_TRUE(LineExt::check_point(_line2, point2));
+}
+
+TEST_F(LineExtTest, get_line_dir_2d_ReturnedDirVector_IsPerpendicularToLineVector) {
+    EXPECT_EQ((LineExt::get_line_dir_2d(_line0).transpose() * _line0.block(0, 0, 2, 1)).value(), 0.f);
+    EXPECT_EQ((LineExt::get_line_dir_2d(_line1).transpose() * _line1.block(0, 0, 2, 1)).value(), 0.f);
+    EXPECT_EQ((LineExt::get_line_dir_2d(_line2).transpose() * _line2.block(0, 0, 2, 1)).value(), 0.f);
+}

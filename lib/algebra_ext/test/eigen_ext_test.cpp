@@ -1,9 +1,8 @@
 #include "algebra_ext/eigen_ext.h"
 
+#include <gtest/gtest.h>
 #include <vector>
 #include <iostream>
-
-#include "gtest/gtest.h"
 
 using namespace algebra_ext;
 using namespace Eigen;
@@ -73,4 +72,15 @@ TEST_F(EigenExtTest, eigen2stdvec_2d_ReturnedWithDifferenType_AsCastInput) {
     EXPECT_EQ(EigenExt::eigen2stdvec_2d<float>(_vectori), cast_vector3i_f);
     EXPECT_EQ(EigenExt::eigen2stdvec_2d<double>(_vectorf), cast_vector3f_d);
     EXPECT_EQ(EigenExt::eigen2stdvec_2d<int>(_vectord), cast_vector3d_i);
+}
+
+TEST_F(EigenExtTest, eigen2stdvec_2d_ParametterAsSomeDenseWrapper_AsCastInput) {
+    EXPECT_EQ(EigenExt::eigen2stdvec_2d<float>(_matrixf.array()), _std_vector3x3f);
+    EXPECT_EQ(EigenExt::eigen2stdvec_2d<float>(_matrixf.matrix()), _std_vector3x3f);
+
+    EXPECT_EQ(EigenExt::eigen2stdvec_2d<float>(_vectorf.array()), _std_vector3f);
+    EXPECT_EQ(EigenExt::eigen2stdvec_2d<float>(_vectorf.matrix()), _std_vector3f);
+
+    EXPECT_EQ(EigenExt::eigen2stdvec_2d<float>(_arrayf.array()), _std_vector3f);
+    EXPECT_EQ(EigenExt::eigen2stdvec_2d<float>(_arrayf.matrix()), _std_vector3f);
 }

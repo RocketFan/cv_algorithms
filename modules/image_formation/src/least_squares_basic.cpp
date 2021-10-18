@@ -1,28 +1,34 @@
 #include "image_formation/least_squares_basic.h"
 
+#include <algebra_ext/line_ext.h>
 #include <iostream>
 
 using namespace image_formation;
+using namespace algebra_ext;
 
-bool LeastSquaresBasic::find_lines_intersection_point_2d(Matrix<float, 1, 2> &point, const Matrix<float, -1, 3> &lines) {
+Vector2f LeastSquaresBasic::find_lines_intersection_point_2d(const Matrix<float, -1, 3> &lines) {
     int n_lines = lines.rows();
 
-    if (n_lines < 2) {
-        std::cout << "Expect min 2 in_lines rows, got " << n_lines << std::endl;
+    if (n_lines < 2)
+        throw std::invalid_argument("Expect min 2 lines rows, got " + std::to_string(n_lines));
 
-        return false;
+    MatrixXf I = MatrixXf::Identity(2, 2);
+    MatrixXf R = MatrixXf::Zero(2, 2);
+    Vector2f q = Vector2f::Zero();
+
+    for(int i = 0; i < n_lines; i++) {
+        Vector3f line = lines.row(i);
+        Vector2f line_dir = LineExt::get_line_dir_2d(line);
+        Vector2f line_point = LineExt::get_line_point_2d(line);
+
+        MatrixXf tmp = I - line_dir * line_dir.transpose();
+        R += tmp;
+        q += tmp * line_point;
     }
 
-    Matrix<float, 1, 3> cross_lines = lines.row(0);
+    // To solve Rp = q, where p is wanted point
+    auto R_pseudo_inv = (R.transpose() * R).inverse() * R.transpose();
+    auto point = R_pseudo_inv * q;
 
-    for (int i = 1; i < n_lines - 1; i++) {
-        std::cout << "Cross of lines " << i << ":\n"
-                  << cross_lines << std::endl;
-        cross_lines = cross_lines.cross(lines.row(i));
-    }
-
-    point << cross_lines(0, 0), cross_lines(0, 1);
-    point /= cross_lines(0, 2);
-
-    return true;
+    return point;
 }

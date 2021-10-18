@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(cv_algorithms)
 
+enable_testing()
 find_package(OpenCV REQUIRED)
 find_package(Eigen3 REQUIRED)
 
