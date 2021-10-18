@@ -21,7 +21,7 @@ it can propably also work on other systems and versions of cmake and c++, but wa
 
 Install some additional dependencies
 ```bash
-sudo apt install git cmake
+sudo apt install git cmake build-essential python3-matplotlib python3-numpy python3-dev
 ```
 
 To build OpenCV with GPU support use this command and use this [tutorial]() 
@@ -37,11 +37,11 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 
 ## Setup && Run
 ```bash
-git clone https://github.com/RocketFan/cv_algorithms.git
+git clone https://github.com/RocketFan/cv_algorithms.git --recursive
 cd cv_algorithms
 mkdir build && cd build
 cmake ..
-cmake --build
+cmake --build .
 ```
 
 Go to build/bin folder and find exercise which you want to run.
