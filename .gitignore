@@ -1,5 +1,6 @@
 # Dirs for build and bin files
 build
+build*
 
 # Prerequisites
 *.d

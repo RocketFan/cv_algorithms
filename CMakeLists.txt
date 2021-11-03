@@ -11,3 +11,4 @@ find_package(Eigen3 REQUIRED)
 
 add_subdirectory(lib)
 add_subdirectory(modules)
+add_subdirectory(app)
