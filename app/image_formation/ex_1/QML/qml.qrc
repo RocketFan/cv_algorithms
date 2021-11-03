@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>canvas.js</file>
+        <file>ShapeLine.qml</file>
     </qresource>
 </RCC>

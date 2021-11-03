@@ -4,7 +4,7 @@ project(ex_1 VERSION 0.1 LANGUAGES CXX)
 
 set(PROJECT_SOURCES
         main.cpp
-        qml.qrc
+        QML/qml.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
