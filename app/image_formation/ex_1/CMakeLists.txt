@@ -2,9 +2,17 @@ cmake_minimum_required(VERSION 3.14)
 
 project(ex_1 VERSION 0.1 LANGUAGES CXX)
 
+include_directories(include)
+
+set(PROJECT_HEADERS
+    include/BackEnd.h
+)
+
 set(PROJECT_SOURCES
-        main.cpp
-        QML/qml.qrc
+    main.cpp
+    src/BackEnd.cpp
+    ${PROJECT_HEADERS}
+    QML/qml.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -33,7 +41,8 @@ endif()
 target_compile_definitions(${PROJECT_NAME}_app
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(${PROJECT_NAME}_app
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Widgets)
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Widgets 
+  Qt${QT_VERSION_MAJOR}::Charts image_formation)
 
 set_target_properties(${PROJECT_NAME}_app PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

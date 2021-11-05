@@ -5,11 +5,17 @@ import QtQuick.Window 2.12
 import QtQuick.Shapes 1.12
 import QtCharts 2.3
 
+import io.qt.backend 1.0
+
 ApplicationWindow {
     width: 640
     height: 480
     visible: true
     title: qsTr("Hello World")
+
+    BackEnd {
+        id: backend
+    }
 
     ChartView {
         x: 100
@@ -51,6 +57,9 @@ ApplicationWindow {
                 const start = lineDrawing.start
                 const end = lineDrawing.end
 
+                if (start == end)
+                    return
+
                 const qtPoint1 = Qt.point(start.x + x, start.y + y)
                 const qtPoint2 = Qt.point(end.x + x, end.y + y)
                 const point1 = chartView.mapToValue(qtPoint1, parent.plotArea)
@@ -61,6 +70,8 @@ ApplicationWindow {
                 var line = chartView.createSeries(ChartView.SeriesTypeLine, "Line", axisX, axisY)
                 line.append(point1.x, point1.y)
                 line.append(point2.x, point2.y)
+                console.log(backend.lines.length)
+                backend.lines.append(line)
             }
 
             onPressed: {
