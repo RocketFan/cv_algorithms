@@ -3,19 +3,25 @@
 #include <QVariant>
 #include <iostream>
 
-BackEnd::BackEnd(QObject *parent) : QObject(parent) {}
+using namespace image_formation;
 
-QVariantList BackEnd::lines() {
+BackEnd::BackEnd(QObject *parent) : QObject(parent), m_lines(new LinesMatrix(this)) {
+}
+
+LinesMatrix* BackEnd::lines() {
     return m_lines;
 }
 
-void BackEnd::setLines(const QVariantList &lines) {
+void BackEnd::setLines(LinesMatrix* lines) {
     if (lines == m_lines)
         return;
 
-    std::cout << lines.count() << std::endl;
-    // QVariant::fromValue(lines);
+    delete m_lines;
 
     m_lines = lines;
     emit linesChanged();
+}
+
+void BackEnd::print() {
+    std::cout << "BacEnd!!" << std::endl;
 }

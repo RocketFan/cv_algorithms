@@ -46,8 +46,8 @@ ApplicationWindow {
                 const center = Qt.vector2d(lineDrawing.center.x, lineDrawing.center.y)
                 const dir = center.minus(mousePoint).normalized()
 
-                const start = center.plus(dir.times(1000))
-                const end = center.plus(dir.times(-1000))
+                const start = center.plus(dir.times(10000))
+                const end = center.plus(dir.times(-10000))
 
                 lineDrawing.start = Qt.point(start.x, start.y)
                 lineDrawing.end = Qt.point(end.x, end.y)
@@ -68,10 +68,11 @@ ApplicationWindow {
                 const axisX = chartView.axisX(lineSeries)
                 const axisY = chartView.axisY(lineSeries)
                 var line = chartView.createSeries(ChartView.SeriesTypeLine, "Line", axisX, axisY)
+
                 line.append(point1.x, point1.y)
                 line.append(point2.x, point2.y)
-                console.log(backend.lines.length)
-                backend.lines.append(line)
+                backend.print()
+                backend.lines.append(point1, point2)
             }
 
             onPressed: {

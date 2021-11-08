@@ -2,6 +2,9 @@
 #include <QQmlApplicationEngine>
 
 #include "BackEnd.h"
+#include "LinesMatrix.h"
+
+using namespace image_formation;
 
 int main(int argc, char *argv[]) {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)

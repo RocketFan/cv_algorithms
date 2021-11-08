@@ -1,25 +1,31 @@
 #pragma once
 
-#include <image_formation/least_squares_basic.h>
-
 #include <QObject>
 #include <QtCharts/QLineSeries>
 
+#include "LinesMatrix.h"
+
 using namespace QtCharts;
+
+namespace image_formation {
 
 class BackEnd : public QObject {
     Q_OBJECT
-    Q_PROPERTY(QVariantList lines READ lines WRITE setLines NOTIFY linesChanged)
+    Q_PROPERTY(LinesMatrix* lines READ lines WRITE setLines NOTIFY linesChanged)
 
    public:
-    explicit BackEnd(QObject *parent = nullptr);
+    explicit BackEnd(QObject* parent = nullptr);
 
-    QVariantList lines();
-    void setLines(const QVariantList &lines);
+    LinesMatrix* lines();
+    void setLines(LinesMatrix* lines);
 
    signals:
     void linesChanged();
 
+   public slots:
+    void print();
+
    private:
-    QVariantList m_lines;
+    LinesMatrix* m_lines;
 };
+}  // namespace image_formation

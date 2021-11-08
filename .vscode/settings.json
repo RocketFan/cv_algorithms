@@ -64,6 +64,7 @@
         "memory_resource": "cpp",
         "random": "cpp",
         "cinttypes": "cpp",
-        "qlineseries": "cpp"
+        "qlineseries": "cpp",
+        "qobject": "cpp"
     }
 }

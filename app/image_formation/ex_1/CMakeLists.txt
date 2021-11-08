@@ -6,11 +6,13 @@ include_directories(include)
 
 set(PROJECT_HEADERS
     include/BackEnd.h
+    include/LinesMatrix.h
 )
 
 set(PROJECT_SOURCES
     main.cpp
     src/BackEnd.cpp
+    src/LinesMatrix.cpp
     ${PROJECT_HEADERS}
     QML/qml.qrc
 )
@@ -42,7 +44,7 @@ target_compile_definitions(${PROJECT_NAME}_app
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(${PROJECT_NAME}_app
   PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Widgets 
-  Qt${QT_VERSION_MAJOR}::Charts image_formation)
+  Qt${QT_VERSION_MAJOR}::Charts image_formation algebra_ext)
 
 set_target_properties(${PROJECT_NAME}_app PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

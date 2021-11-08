@@ -4,6 +4,7 @@ build*
 
 # Cmake Qt
 CMakeLists.txt.user
+*.qml.autosave
 
 # Prerequisites
 *.d
