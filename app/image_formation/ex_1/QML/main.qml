@@ -11,10 +11,15 @@ ApplicationWindow {
     width: 640
     height: 480
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("ex_1")
 
     BackEnd {
         id: backend
+        onPointChanged: {
+            scatterSeries.visible = true
+            scatterSeries.remove(0)
+            scatterSeries.append(backend.point.x, backend.point.y)
+        }
     }
 
     ChartView {
@@ -30,6 +35,15 @@ ApplicationWindow {
         LineSeries {
             id: lineSeries
             name: "LineSeries"
+        }
+
+        ScatterSeries {
+            id: scatterSeries
+            name: "ScatterSeries"
+            color: "blue"
+            visible: false
+
+            XYPoint { x: backend.point.x; y: backend.point.y }
         }
 
         MouseArea {
@@ -71,7 +85,6 @@ ApplicationWindow {
 
                 line.append(point1.x, point1.y)
                 line.append(point2.x, point2.y)
-                backend.print()
                 backend.lines.append(point1, point2)
             }
 

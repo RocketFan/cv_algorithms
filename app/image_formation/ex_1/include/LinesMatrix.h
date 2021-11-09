@@ -14,13 +14,17 @@ class LinesMatrix : public QObject {
 
    public:
     explicit LinesMatrix(QObject *parent = nullptr);
-    ~LinesMatrix();
 
     MatrixXf matrix();
 
    public slots:
     // Add line from two points
     void append(const QPointF &p1, const QPointF &p2);
+
+    int getSize();
+
+   signals:
+    void linesChanged();
 
    private:
     // Lines are in every row in format (a, b, c), where ax + by + c = 0
